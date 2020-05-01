@@ -8,7 +8,7 @@ class TwilioService {
 
   sentSMS(to, body) {
     return this.client.messages.create({
-      from: '+15005550006',
+      from: TwilioConfig.magicNumber,
       to,
       body,
     });

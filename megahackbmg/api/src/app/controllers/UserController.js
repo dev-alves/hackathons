@@ -6,7 +6,7 @@ class UserController {
       .then(response => {
         res.json(response);
       })
-      .catch(error => console.log(error));
+      .catch(error => res.json(error));
   }
 }
 
