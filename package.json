@@ -1,0 +1,28 @@
+{
+  "name": "megahackbmg-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "queue": "nodemon src/queue.js",
+    "dev:debug": "nodemon --inspect src/server.js",
+    "fix": "yarn eslint --fix src --ext .js"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.18.2",
+    "sucrase": "^3.10.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.0.0-beta.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "sequelize": "^5.21.7"
+  }
+}
