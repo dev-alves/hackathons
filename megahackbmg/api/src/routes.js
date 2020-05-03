@@ -3,6 +3,6 @@ import UserController from './app/controllers/UserController';
 
 const routes = new Router();
 
-routes.post('/message', UserController.message);
+routes.get('/users/specialty/:idSpecialty', UserController.getUsersBySpecialty);
 
 export default routes;

@@ -10,5 +10,13 @@ export default class User extends Model {
       },
       { sequelize }
     );
+    return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Specialty, {
+      foreignKey: 'specialty_id',
+      as: 'specialties',
+    });
   }
 }

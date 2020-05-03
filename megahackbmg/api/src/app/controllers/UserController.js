@@ -1,12 +1,21 @@
-import TwilioService from '../service/TwilioService';
+import User from '../models/user';
+import WrapperResponseToBot from '../wrapper/responseMessageToBot';
 
 class UserController {
-  async message(req, res) {
-    TwilioService.sentSMS(req.body.to, req.body.message)
-      .then(response => {
-        res.json(response);
-      })
-      .catch(error => res.json(error));
+  async getUsersBySpecialty(req, res) {
+    const { idSpecialty } = req.params;
+
+    const users = await User.findAll({
+      where: { specialty_id: idSpecialty },
+      attributes: ['id', 'name', 'email', 'phone_number'],
+    });
+
+    return res.send(WrapperResponseToBot(users[0].dataValues));
+  }
+
+  async getUserById(req, res) {
+    const { userId } = req.params;
+    return res.json(await User.findByPk(userId));
   }
 }
 

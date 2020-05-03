@@ -1,6 +1,6 @@
 module.exports = {
   up: QueryInterface => {
-    return QueryInterface.bulkInsert('specialty', [
+    return QueryInterface.bulkInsert('specialties', [
       {
         name: 'Marketing',
         created_at: new Date(),
