@@ -15,8 +15,10 @@ class UserController {
 
   async index(req, res, next) {
     const { id } = req.user;
-    const userInfo = await User.findByPk(id);
-    return res.json(userInfo);
+    const { name, email, phone_number, points, cashback } = await User.findByPk(
+      id
+    );
+    return res.json({ name, email, phone_number, points, cashback });
   }
 }
 
