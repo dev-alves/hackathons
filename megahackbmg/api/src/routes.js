@@ -9,6 +9,8 @@ const routes = new Router();
 
 routes.post('/users/store', UserController.store, SessionController.store);
 
+routes.post('/login', SessionController.login);
+
 routes.use(AuthValidation);
 routes.post('/users/store/verify', TwilioController.verify);
 
