@@ -1,15 +1,22 @@
 import ClientTwilio from 'twilio';
 import TwilioConfig from '../../config/twilio';
 
+const clientTwilio = () => {
+  return ClientTwilio(TwilioConfig.accountSid, TwilioConfig.authToken);
+};
 class TwilioService {
-  constructor() {
-    this.client = ClientTwilio(TwilioConfig.accountSid, TwilioConfig.authToken);
+  async authenticateSMS(phoneNumber) {
+    const twilio = clientTwilio();
+    twilio.verify
+      .services(TwilioConfig.accountSidVerification)
+      .verifications.create({ to: phoneNumber, channel: 'sms' });
   }
 
-  sentSMS(to, body) {
-    return this.client.messages.create({
-      from: TwilioConfig.magicNumber,
-    });
+  async verifySMS(phoneNumber) {
+    const twilio = clientTwilio();
+    twilio.verify
+      .services(TwilioConfig.accountSidVerification)
+      .verificationChecks.create({ to: phoneNumber, code: 'sms' });
   }
 }
 

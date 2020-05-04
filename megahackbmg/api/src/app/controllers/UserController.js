@@ -1,21 +1,15 @@
 import User from '../models/user';
-import WrapperResponseToBot from '../wrapper/responseMessageToBot';
 
 class UserController {
-  async getUsersBySpecialty(req, res) {
-    const { idSpecialty } = req.params;
-
-    const users = await User.findAll({
-      where: { specialty_id: idSpecialty },
-      attributes: ['id', 'name', 'email', 'phone_number'],
-    });
-
-    return res.send(WrapperResponseToBot(users[0].dataValues));
+  async store(req, res, next) {
+    req.user = await User.create(req.body);
+    return next();
   }
 
-  async getUserById(req, res) {
-    const { userId } = req.params;
-    return res.json(await User.findByPk(userId));
+  async index(req, res, next) {
+    const { id } = req.user;
+    const userInfo = await User.findByPk(id);
+    return res.json(userInfo);
   }
 }
 
