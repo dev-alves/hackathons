@@ -31,7 +31,7 @@ class UserController {
       return res.json({ id, name, email, cashback, points });
     }
 
-    return res.status(401).json({ error: 'User not found' });
+    return res.status(401).json({ message: 'User not found!' });
   }
 }
 
