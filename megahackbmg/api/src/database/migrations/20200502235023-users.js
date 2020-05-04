@@ -14,17 +14,21 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       phone_number: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      specialty_id: {
+      points: {
         type: Sequelize.INTEGER,
-        references: { model: 'specialties', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        allowNull: true,
+      },
+      cashback: {
+        type: Sequelize.INTEGER,
         allowNull: true,
       },
       created_at: {
