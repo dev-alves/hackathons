@@ -1,5 +1,5 @@
 class SessionRedirect {
-  async storeValidation(req, res, next) {
+  async redirect(req, res, next) {
     res.redirect('/users');
   }
 }

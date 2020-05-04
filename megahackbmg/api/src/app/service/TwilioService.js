@@ -5,18 +5,18 @@ const clientTwilio = () => {
   return ClientTwilio(TwilioConfig.accountSid, TwilioConfig.authToken);
 };
 class TwilioService {
-  async authenticateSMS(phoneNumber) {
+  authenticateSMS(phoneNumber) {
     const twilio = clientTwilio();
-    twilio.verify
+    return twilio.verify
       .services(TwilioConfig.accountSidVerification)
       .verifications.create({ to: phoneNumber, channel: 'sms' });
   }
 
-  async verifySMS(phoneNumber) {
+  verifySMS(phoneNumber, code) {
     const twilio = clientTwilio();
-    twilio.verify
+    return twilio.verify
       .services(TwilioConfig.accountSidVerification)
-      .verificationChecks.create({ to: phoneNumber, code: 'sms' });
+      .verificationChecks.create({ to: phoneNumber, code });
   }
 }
 
