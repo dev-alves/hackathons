@@ -18,8 +18,6 @@ class TwilioService {
       .services(TwilioConfig.accountSidVerification)
       .verificationChecks.create({ to: phoneNumber, code });
   }
-
-  verifyMyPhoneNumber(phoneNumber) {}
 }
 
 export default new TwilioService();
