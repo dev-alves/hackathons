@@ -20,6 +20,19 @@ class UserController {
     );
     return res.json({ name, email, phone_number, points, cashback });
   }
+
+  async update(req, res, next) {
+    const { id } = req.body;
+    const userExists = await User.findByPk(id);
+    if (userExists) {
+      const { name, email, cashback, points } = await userExists.update(
+        req.body
+      );
+      return res.json({ id, name, email, cashback, points });
+    }
+
+    return res.status(401).json({ error: 'User not found' });
+  }
 }
 
 export default new UserController();
