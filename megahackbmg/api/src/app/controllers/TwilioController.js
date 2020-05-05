@@ -25,7 +25,7 @@ class TwilioController {
 
   verifyCaller(req, res) {
     TwilioService.addNewOutoingCaller(req.body.phone_number)
-      .then(data => res.json({ verified: true }))
+      .then(res.json({ verified: true }))
       .catch(error => {
         console.log(error);
         return res.json({ verified: false });
