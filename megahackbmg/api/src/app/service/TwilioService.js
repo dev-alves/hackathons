@@ -31,11 +31,11 @@ class TwilioService {
     });
   }
 
-  async addNewOutoingCaller(phone_number) {
+  async addNewOutoingCaller(phoneNumber) {
     const twilio = clientTwilio();
     const userExists = await User.findOne({
       where: {
-        phone_number,
+        phone_number: phoneNumber,
       },
     });
 
