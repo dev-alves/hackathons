@@ -8,14 +8,14 @@ class TwilioService {
   authenticateSMS(phoneNumber) {
     const twilio = clientTwilio();
     return twilio.verify
-      .services(TwilioConfig.accountSidVerification)
+      .services(TwilioConfig.twilioVerificationServiceSID)
       .verifications.create({ to: phoneNumber, channel: 'sms' });
   }
 
   verifySMS(phoneNumber, code) {
     const twilio = clientTwilio();
     return twilio.verify
-      .services(TwilioConfig.accountSidVerification)
+      .services(TwilioConfig.twilioVerificationServiceSID)
       .verificationChecks.create({ to: phoneNumber, code });
   }
 }
