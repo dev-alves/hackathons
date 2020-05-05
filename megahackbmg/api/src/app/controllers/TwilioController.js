@@ -15,6 +15,22 @@ class TwilioController {
         return res.status(401).json(error);
       });
   }
+
+  notification(req, res) {
+    const { phone_number, body } = req.body;
+    TwilioService.sendSMSNotification(phone_number, body)
+      .then(res.json({ notification: true }))
+      .catch(error => res.stats(401).json({ error }));
+  }
+
+  verifyCaller(req, res) {
+    TwilioService.addNewOutoingCaller(req.body.phone_number)
+      .then(data => res.json({ verified: true }))
+      .catch(error => {
+        console.log(error);
+        return res.json({ verified: false });
+      });
+  }
 }
 
 export default new TwilioController();

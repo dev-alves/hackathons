@@ -26,4 +26,7 @@ routes.use(AuthValidation);
 routes.post('/users/store/verify', TwilioController.verify);
 routes.get('/user', UserController.index);
 
+routes.post('/verify_caller', TwilioController.verifyCaller);
+routes.post('/notification', TwilioController.notification);
+
 export default routes;
